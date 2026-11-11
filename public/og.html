@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<style>
+  @font-face {
+    font-family: "Vazirmatn";
+    src: url("/fonts/Vazirmatn-Regular.woff2") format("woff2");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "Vazirmatn";
+    src: url("/fonts/Vazirmatn-Bold.woff2") format("woff2");
+    font-weight: 700;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: "Vazirmatn", sans-serif;
+    background: #f7fbf9;
+    color: #173f3c;
+    position: relative;
+  }
+  .dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgb(43 179 163 / 0.14) 2px, transparent 2px);
+    background-size: 34px 34px;
+  }
+  .blob1 {
+    position: absolute; top: -120px; left: -100px;
+    width: 360px; height: 360px; border-radius: 50%;
+    background: rgb(168 230 207 / 0.5); filter: blur(70px);
+  }
+  .blob2 {
+    position: absolute; bottom: -140px; right: -80px;
+    width: 420px; height: 420px; border-radius: 50%;
+    background: rgb(255 142 114 / 0.18); filter: blur(80px);
+  }
+  .card {
+    position: relative;
+    width: 1000px;
+    height: 470px;
+    margin: 80px auto 0;
+    background: rgb(255 255 255 / 0.75);
+    border: 1.5px solid #dcebe2;
+    border-radius: 44px;
+    box-shadow: 0 30px 80px rgb(23 63 60 / 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .brand-name {
+    margin-top: 14px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #173f3c;
+  }
+  h1 {
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-top: 10px;
+  }
+  .dan { color: #1d9e90; }
+  .ai { color: #e0563e; }
+  .sub {
+    margin-top: 14px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #4a7a72;
+  }
+  .tagline {
+    margin-top: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #e0563e;
+  }
+  .badges {
+    margin-top: 30px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .badge {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f766e;
+    background: #e7f7ef;
+    border: 1.5px solid #cfe9db;
+    border-radius: 999px;
+    padding: 10px 24px;
+  }
+  .path-wrap { position: absolute; left: -14px; bottom: -26px; opacity: 0.45; }
+</style>
+</head>
+<body>
+  <div class="dots"></div>
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+
+  <div class="card">
+    <img src="/brand/logo-mark.png" alt="" width="132" height="132" style="object-fit:contain;border-radius:50%;background:#fff;box-shadow:0 10px 30px rgb(23 63 60 / .12);padding:10px;" />
+    <p class="brand-name">کانون هم‌آفرینی <span class="danai-word">دانای</span></p>
+    <h1>با <span class="danai-word">دانای</span> در سفر یادگیری</h1>
+    <style>
+      .danai-word{
+        background-image:linear-gradient(to left,#1d9e90 0%,#1d9e90 60%,#e0563e 60%,#e0563e 100%);
+        -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+        display:inline-block;
+      }
+    </style>
+    <p class="tagline">از اندیشه‌ورزی تا خرد عملی</p>
+    <p class="sub">دکتر سیده فاطمه شمشیرگران | متخصص یادگیری و توسعه</p>
+    <div class="badges">
+      <span class="badge">سفر معلمان</span>
+      <span class="badge">کوله‌پشتی هوشمند</span>
+      <span class="badge">به‌زودی: تست‌ها</span>
+    </div>
+    <svg class="path-wrap" width="240" height="120" viewBox="0 0 240 120" fill="none" aria-hidden="true">
+      <path d="M210 100 C 170 95 160 70 120 58 C 85 47 70 40 45 22" stroke="#2bb3a3" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 12"/>
+      <circle cx="210" cy="100" r="7" fill="#a8e6cf"/>
+      <path d="M45 4 L48.5 14.5 L59 18 L48.5 21.5 L45 32 L41.5 21.5 L31 18 L41.5 14.5 Z" fill="#ff8e72"/>
+    </svg>
+  </div>
+</body>
+</html>

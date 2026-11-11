@@ -1,0 +1,210 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-vazirmatn), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* پالت دانای — فیروزه‌ای، سبز پاستیلی، حال‌خوب (مرجانی) */
+  --color-turquoise-bright: var(--turquoise-bright);
+  --color-turquoise: var(--turquoise);
+  --color-turquoise-deep: var(--turquoise-deep);
+  --color-turquoise-ink: var(--turquoise-ink);
+  --color-coral-bright: var(--coral-bright);
+  --color-coral: var(--coral);
+  --color-coral-deep: var(--coral-deep);
+  --color-pastel: var(--pastel);
+  --color-pastel-soft: var(--pastel-soft);
+  --color-ink: var(--ink);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* رنگ‌های اختصاصی برند دانای */
+  --turquoise-bright: #2bb3a3;
+  --turquoise: #1d9e90;
+  --turquoise-deep: #178277;
+  --turquoise-ink: #0f766e;
+  --coral-bright: #ff8e72;
+  --coral: #e0563e;
+  --coral-deep: #c2410c;
+  --pastel: #a8e6cf;
+  --pastel-soft: #e7f7ef;
+  --ink: #173f3c;
+
+  --background: #f7fbf9;
+  --foreground: #173f3c;
+  --card: #ffffff;
+  --card-foreground: #173f3c;
+  --popover: #ffffff;
+  --popover-foreground: #173f3c;
+  --primary: #178277;
+  --primary-foreground: #ffffff;
+  --secondary: #e7f7ef;
+  --secondary-foreground: #173f3c;
+  --muted: #eff7f2;
+  --muted-foreground: #4a7a72;
+  --accent: #ffefe9;
+  --accent-foreground: #9a3412;
+  --destructive: #b91c1c;
+  --border: #dcebe2;
+  --input: #dcebe2;
+  --ring: #178277;
+  --chart-1: #178277;
+  --chart-2: #a8e6cf;
+  --chart-3: #ff8e72;
+  --chart-4: #0f766e;
+  --chart-5: #e0563e;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #173f3c;
+  --sidebar-primary: #178277;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e7f7ef;
+  --sidebar-accent-foreground: #173f3c;
+  --sidebar-border: #dcebe2;
+  --sidebar-ring: #178277;
+}
+
+.dark {
+  --background: #0d2422;
+  --foreground: #e6f4ef;
+  --card: #12302d;
+  --card-foreground: #e6f4ef;
+  --popover: #12302d;
+  --popover-foreground: #e6f4ef;
+  --primary: #2bb3a3;
+  --primary-foreground: #06211f;
+  --secondary: #17403b;
+  --secondary-foreground: #e6f4ef;
+  --muted: #17403b;
+  --muted-foreground: #9cc6bb;
+  --accent: #3a1f16;
+  --accent-foreground: #ffc7b5;
+  --destructive: #f87171;
+  --border: #1e4b45;
+  --input: #1e4b45;
+  --ring: #2bb3a3;
+  --sidebar: #12302d;
+  --sidebar-foreground: #e6f4ef;
+  --sidebar-primary: #2bb3a3;
+  --sidebar-primary-foreground: #06211f;
+  --sidebar-accent: #17403b;
+  --sidebar-accent-foreground: #e6f4ef;
+  --sidebar-border: #1e4b45;
+  --sidebar-ring: #2bb3a3;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  ::selection {
+    background-color: rgb(43 179 163 / 0.22);
+  }
+}
+
+@layer utilities {
+  /* مسیر سفر — موتیف نقطه‌چین پس‌زمینه */
+  .journey-dots {
+    background-image: radial-gradient(rgb(43 179 163 / 0.16) 1.5px, transparent 1.5px);
+    background-size: 26px 26px;
+  }
+
+  /* نام برند دانای — دو رنگ، یک کلمهٔ متصل (گرادیان hard-stop روی متن پیوسته) */
+  .danai-word {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* جادهٔ نقشهٔ مسیر سفر — جریان نرم نقطه‌ها */
+  .road-dash {
+    animation: road-dash 40s linear infinite;
+  }
+  @keyframes road-dash {
+    to {
+      stroke-dashoffset: -254;
+    }
+  }
+
+  .animate-float {
+    animation: float 7s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float 10s ease-in-out infinite;
+  }
+  .animate-float-delay {
+    animation: float 8s ease-in-out 1.6s infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-14px) rotate(1.5deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-float-slow,
+    .animate-float-delay,
+    .road-dash {
+      animation: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* در چیدمان RTL، دکمهٔ بستن شیت به سمت چپ برود تا با لوگو تداخل نکند
+   (بیرون از لایه‌ها تا بر utilities تیلویند غلبه کند) */
+[data-slot="sheet-content"] > button.absolute {
+  right: auto !important;
+  left: 1rem !important;
+}
+
+/* marker-test-9911 */

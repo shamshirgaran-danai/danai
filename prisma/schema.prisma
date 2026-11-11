@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// پیام‌های فرم تماس سایت دانآی
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// ایمیل‌های افرادی که می‌خواهند از شروع سفر دانش‌آموزان باخبر شوند
+model NotifySignup {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+// ساختار داده ماژول تست‌ها (برای آینده — رزرو شده)
+model Quiz {
+  id        String         @id @default(cuid())
+  title     String
+  isActive  Boolean        @default(false)
+  createdAt DateTime       @default(now())
+  questions QuizQuestion[]
+}
+
+model QuizQuestion {
+  id       String  @id @default(cuid())
+  quizId   String
+  text     String
+  order    Int     @default(0)
+  quiz     Quiz    @relation(fields: [quizId], references: [id])
+  options  QuizOption[]
+}
+
+model QuizOption {
+  id         String       @id @default(cuid())
+  questionId String
+  text       String
+  isCorrect  Boolean      @default(false)
+  order      Int          @default(0)
+  question   QuizQuestion @relation(fields: [questionId], references: [id])
+}
