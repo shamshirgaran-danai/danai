@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { submitToWeb3Forms } from "@/lib/web3forms";
 import { FadeIn } from "./fade-in";
 
 const notifySchema = z.object({
@@ -36,12 +37,15 @@ export function StudentsJourney() {
 
   async function onSubmit(values: NotifyFormValues) {
     try {
-      const response = await fetch("/api/notify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+      const sent = await submitToWeb3Forms({
+        subject: "خبرم کن — سفر دانش‌آموزان دانای",
+        replyTo: values.email.trim(),
+        fields: {
+          email: values.email.trim(),
+          message: `درخواست خبر از شروع سفر دانش‌آموزان: ${values.email.trim()}`,
+        },
       });
-      if (!response.ok) throw new Error("failed");
+      if (!sent) throw new Error("failed");
       toast({
         title: "ایمیل شما با موفقیت ثبت شد",
         description:

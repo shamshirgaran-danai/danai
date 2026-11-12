@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { siteLinks } from "@/lib/site-links";
+import { submitToWeb3Forms } from "@/lib/web3forms";
 import { FadeIn } from "./fade-in";
 
 const contactSchema = z.object({
@@ -52,12 +53,16 @@ export function Contact() {
 
   async function onSubmit(values: ContactFormValues) {
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+      const sent = await submitToWeb3Forms({
+        subject: `پیام جدید از سایت دانای — ${values.name.trim()}`,
+        replyTo: values.email.trim(),
+        fields: {
+          name: values.name.trim(),
+          email: values.email.trim(),
+          message: values.message.trim(),
+        },
       });
-      if (!response.ok) throw new Error("failed");
+      if (!sent) throw new Error("failed");
       toast({
         title: "پیام شما با موفقیت ثبت شد",
         description: "به‌زودی پاسخ شما را از همین راه ارسال می‌کنم؛ منتظر خبرهای خوب باشید.",
